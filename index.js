@@ -10,10 +10,14 @@ const pfServer = express()
 
 //Use cors in express server
 pfServer.use(cors())
-//parsing json
+//parsing json; if request type is json parse it into js
 pfServer.use(express.json())
 //using router
 pfServer.use(router)
+
+//giving permision for front-end to access the server ; want to make that file as static
+pfServer.use('/uploads',express.static('./uploads'))
+
 
 //port
 const PORT = 3000 || process.env.PORT
